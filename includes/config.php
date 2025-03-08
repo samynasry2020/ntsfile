@@ -1,9 +1,9 @@
 <?php
-define('DB_HOST', 'YOUR_AIVEN_HOST');
-define('DB_USER', 'YOUR_AIVEN_USER');
-define('DB_PASS', 'YOUR_AIVEN_PASSWORD');
-define('DB_NAME', 'ntsfm');
-define('DB_PORT', 12345);
+define('DB_HOST', 'ntsfm-ntsfm.c.aivencloud.com');
+define('DB_USER', 'avnadmin');
+define('DB_PASS', 'AVNS_tZ_mA6t9dITpkAznJPL');
+define('DB_NAME', 'defaultdb');
+define('DB_PORT', 17153);
 
 define('UPLOAD_DIR', __DIR__ . '/../uploads');
 define('ALLOWED_FILE_TYPES', [

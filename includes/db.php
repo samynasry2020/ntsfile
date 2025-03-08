@@ -19,26 +19,26 @@ class Database {
         
         // Enable SSL
         $this->connection->ssl_set(
-            null,
-            null,
-            null,
-            null,
-            null
+            null, // key
+            null, // cert
+            null, // ca
+            null, // capath
+            MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT // cipher
         );
     }
-    
+
     public function query($sql) {
         $result = $this->connection->query($sql);
-        if ($result === false) {
-            throw new Exception("Query failed: " . $this->connection->error);
+        if (!$result) {
+            die("Query failed: " . $this->connection->error);
         }
         return $result;
     }
-    
+
     public function escape($value) {
         return $this->connection->real_escape_string($value);
     }
-    
+
     public function close() {
         $this->connection->close();
     }
