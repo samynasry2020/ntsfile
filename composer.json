@@ -1,0 +1,20 @@
+{
+    "name": "samynasry2020/ntsfile",
+    "description": "NTSFM - File Manager",
+    "type": "project",
+    "require": {
+        "php": "^7.4",
+        "vlucas/phpdotenv": "^5.5",
+        "phpmailer/phpmailer": "^6.8",
+        " Intervention/image": "^2.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "NTSFM\\": "includes/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}
