@@ -12,7 +12,7 @@
 
 1. قم بنسخ المشروع:
 ```bash
-git clone https://github.com/yourusername/ntsfm.git
+git clone https://github.com/samynasry2020/ntsfile.git
 ```
 
 2. قم بتثبيت التبعيات:
