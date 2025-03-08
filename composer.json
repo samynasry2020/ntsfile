@@ -6,7 +6,8 @@
         "php": "^7.4",
         "vlucas/phpdotenv": "^5.5",
         "phpmailer/phpmailer": "^6.8",
-        " Intervention/image": "^2.7"
+        "Intervention/image": "^2.7",
+        "aiven/aiven-php-client": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -16,5 +17,11 @@
     "config": {
         "optimize-autoloader": true,
         "sort-packages": true
+    },
+    "extra": {
+        "aiven": {
+            "service": "postgresql",
+            "version": "14"
+        }
     }
 }

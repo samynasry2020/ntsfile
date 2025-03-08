@@ -29,6 +29,3 @@ Thumbs.db
 phpunit.xml
 composer.lock
 vendor/
-
-# Netlify files
-.netlify/
