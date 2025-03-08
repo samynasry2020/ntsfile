@@ -23,8 +23,11 @@ class Database {
             null, // cert
             null, // ca
             null, // capath
-            MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT // cipher
+            MYSQLI_CLIENT_SSL // cipher
         );
+        
+        // Set charset to utf8mb4
+        $this->connection->set_charset("utf8mb4");
     }
 
     public function query($sql) {
