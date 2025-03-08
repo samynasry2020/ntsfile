@@ -29,3 +29,9 @@ Thumbs.db
 phpunit.xml
 composer.lock
 vendor/
+
+# Render files
+.render/
+
+# Uploads directory (will be created on Render)
+uploads/

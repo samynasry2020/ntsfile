@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: ntsfm
+    env: php
+    buildCommand: composer install --no-dev --optimize-autoloader
+    startCommand: php -S 0.0.0.0:8080
+    envVars:
+      - key: DB_HOST
+        fromServiceEnvVar: DATABASE_HOST
+      - key: DB_USER
+        fromServiceEnvVar: DATABASE_USER
+      - key: DB_PASS
+        fromServiceEnvVar: DATABASE_PASSWORD
+      - key: DB_NAME
+        fromServiceEnvVar: DATABASE_NAME
+      - key: DB_PORT
+        fromServiceEnvVar: DATABASE_PORT
+    healthCheckPath: /health
+    allowInsecure: true
+
+  - type: database
+    name: ntsfm-db
+    engine: postgres
+    version: 14
+    diskSizeGb: 10
+    memoryMb: 1024
+    cpuCount: 1
