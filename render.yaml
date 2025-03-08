@@ -2,7 +2,10 @@ services:
   - type: web
     name: ntsfm
     env: php
-    buildCommand: composer install --no-dev --optimize-autoloader
+    buildCommand: |
+      composer install --no-dev --optimize-autoloader
+      mkdir -p uploads
+      chmod -R 755 uploads
     startCommand: php -S 0.0.0.0:8080
     envVars:
       - key: DB_HOST
