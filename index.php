@@ -147,239 +147,198 @@ $files = $db->query("SELECT f.*, p.can_read, p.can_write, p.can_delete, p.can_re
     </div>
 
     <!-- New Folder Modal -->
-    <div class="modal fade" id="newFolderModal" tabindex="-1" role="dialog" aria-labelledby="newFolderModalLabel" aria-hidden="true">
+    <div class="modal fade" id="newFolderModal" tabindex="-1" role="dialog" aria-labelledby="newFolderModalLabel" aria-describedby="newFolderModalDesc">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="newFolderModalLabel">Create New Folder</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="newFolderForm">
+                    <form id="newFolderForm" aria-label="Create new folder form">
                         <div class="mb-3">
                             <label for="folderName" class="form-label">Folder Name</label>
-                            <input type="text" class="form-control" id="folderName" required>
+                            <input type="text" class="form-control" id="folderName" required aria-required="true" aria-label="Enter folder name">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="createFolder()" aria-label="Create Folder">Create</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Cancel">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="createFolderBtn" aria-label="Create folder">Create Folder</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Upload File Modal -->
-    <div class="modal fade" id="uploadFileModal" tabindex="-1" role="dialog" aria-labelledby="uploadFileModalLabel" aria-hidden="true">
+    <div class="modal fade" id="uploadFileModal" tabindex="-1" role="dialog" aria-labelledby="uploadFileModalLabel" aria-describedby="uploadFileModalDesc">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="uploadFileModalLabel">Upload File</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="uploadForm" enctype="multipart/form-data">
+                    <form id="uploadForm" aria-label="Upload file form">
                         <div class="mb-3">
-                            <label for="file" class="form-label">Select File</label>
-                            <input type="file" class="form-control" id="file" required>
+                            <label for="fileInput" class="form-label">Select File</label>
+                            <input type="file" class="form-control" id="fileInput" required aria-required="true" aria-label="Select file to upload">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="uploadFile()" aria-label="Upload File">Upload</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Cancel">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="uploadBtn" aria-label="Upload file">Upload</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Search Modal -->
-    <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-describedby="searchModalDesc">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="searchModalLabel">Search Files</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="searchForm">
+                    <form id="searchForm" aria-label="Search files form">
                         <div class="mb-3">
-                            <label for="searchQuery" class="form-label">Search Query</label>
-                            <input type="text" class="form-control" id="searchQuery" name="query" required>
+                            <label for="searchInput" class="form-label">Search Term</label>
+                            <input type="text" class="form-control" id="searchInput" required aria-required="true" aria-label="Enter search term">
                         </div>
-                        <div class="mb-3">
-                            <label for="searchType" class="form-label">Search Type</label>
-                            <select class="form-select" id="searchType" name="type">
-                                <option value="">All Types</option>
-                                <option value="file">Files</option>
-                                <option value="folder">Folders</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="searchTags" class="form-label">Tags</label>
-                            <input type="text" class="form-control" id="searchTags" name="tags" placeholder="Comma-separated tags">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Search</button>
                     </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Cancel">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="searchBtn" aria-label="Search files">Search</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Compress Modal -->
-    <div class="modal fade" id="compressModal" tabindex="-1" role="dialog" aria-labelledby="compressModalLabel" aria-hidden="true">
+    <div class="modal fade" id="compressModal" tabindex="-1" role="dialog" aria-labelledby="compressModalLabel" aria-describedby="compressModalDesc">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="compressModalLabel">Compress Files</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="compressForm">
+                    <form id="compressForm" aria-label="Compress files form">
                         <div class="mb-3">
-                            <label for="filesToCompress" class="form-label">Select Files</label>
-                            <select class="form-select" id="filesToCompress" name="file_ids[]" multiple required>
-                                <?php foreach ($files as $file): ?>
-                                    <?php if ($file['type'] == 'file' && $file['can_read']): ?>
-                                        <option value="<?php echo $file['id']; ?>">
-                                            <?php echo htmlspecialchars($file['name']); ?>
-                                        </option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            </select>
+                            <label for="compressName" class="form-label">Archive Name</label>
+                            <input type="text" class="form-control" id="compressName" required aria-required="true" aria-label="Enter archive name">
                         </div>
-                        <div class="mb-3">
-                            <label for="compressParent" class="form-label">Destination Folder</label>
-                            <select class="form-select" id="compressParent" name="parent_id">
-                                <option value="">Root</option>
-                                <?php foreach ($files as $file): ?>
-                                    <?php if ($file['type'] == 'folder' && $file['can_write']): ?>
-                                        <option value="<?php echo $file['id']; ?>">
-                                            <?php echo htmlspecialchars($file['name']); ?>
-                                        </option>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Compress</button>
                     </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Cancel">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="compressBtn" aria-label="Compress files">Compress</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Preview Modal -->
-    <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel" aria-hidden="true">
+    <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel" aria-describedby="previewModalDesc">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="previewModalLabel">File Preview</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close modal"></button>
                 </div>
                 <div class="modal-body">
                     <div id="previewContent"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Versions Modal -->
-    <div class="modal fade" id="versionsModal" tabindex="-1" role="dialog" aria-labelledby="versionsModalLabel" aria-hidden="true">
+    <div class="modal fade" id="versionsModal" tabindex="-1" role="dialog" aria-labelledby="versionsModalLabel" aria-describedby="versionsModalDesc">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="versionsModalLabel">File Versions</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close modal"></button>
                 </div>
                 <div class="modal-body">
                     <div id="versionsList"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Tag Modal -->
-    <div class="modal fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="tagModalLabel" aria-hidden="true">
+    <div class="modal fade" id="tagModal" tabindex="-1" role="dialog" aria-labelledby="tagModalLabel" aria-describedby="tagModalDesc">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tagModalLabel">Tag File</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="tagModalLabel">Add Tags</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="tagForm">
+                    <form id="tagForm" aria-label="Add tags form">
                         <div class="mb-3">
-                            <label for="tags" class="form-label">Tags</label>
-                            <input type="text" class="form-control" id="tags" name="tags" required placeholder="Comma-separated tags">
+                            <label for="tagsInput" class="form-label">Tags</label>
+                            <input type="text" class="form-control" id="tagsInput" aria-label="Enter tags (comma-separated)">
                         </div>
-                        <button type="submit" class="btn btn-primary">Save Tags</button>
                     </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Cancel">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="addTagsBtn" aria-label="Add tags">Add Tags</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Share Modal -->
-    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel" aria-hidden="true">
+    <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-labelledby="shareModalLabel" aria-describedby="shareModalDesc">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="shareModalLabel">Share File</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="shareForm">
+                    <form id="shareForm" aria-label="Share file form">
                         <div class="mb-3">
-                            <label for="shareUsername" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="shareUsername" name="username" required>
+                            <label for="shareEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="shareEmail" required aria-required="true" aria-label="Enter email address">
                         </div>
-                        <div class="mb-3">
-                            <label for="sharePermissions" class="form-label">Permissions</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="canRead" name="permissions[read]" checked>
-                                <label class="form-check-label" for="canRead">Can Read</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="canWrite" name="permissions[write]">
-                                <label class="form-check-label" for="canWrite">Can Write</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="canDelete" name="permissions[delete]">
-                                <label class="form-check-label" for="canDelete">Can Delete</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="canRename" name="permissions[rename]">
-                                <label class="form-check-label" for="canRename">Can Rename</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="canShare" name="permissions[share]">
-                                <label class="form-check-label" for="canShare">Can Share</label>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Share</button>
                     </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Cancel">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="shareBtn" aria-label="Share file">Share</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Shared Link Modal -->
-    <div class="modal fade" id="sharedLinkModal" tabindex="-1" role="dialog" aria-labelledby="sharedLinkModalLabel" aria-hidden="true">
+    <div class="modal fade" id="sharedLinkModal" tabindex="-1" role="dialog" aria-labelledby="sharedLinkModalLabel" aria-describedby="sharedLinkModalDesc">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="sharedLinkModalLabel">Create Shared Link</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="sharedLinkModalLabel">Shared Link</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="sharedLinkForm">
-                        <div class="mb-3">
-                            <label for="expiresAt" class="form-label">Expiration Date (Optional)</label>
-                            <input type="datetime-local" class="form-control" id="expiresAt" name="expires_at">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Create Link</button>
-                    </form>
+                    <div id="sharedLinkContent"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
                 </div>
             </div>
         </div>
@@ -485,7 +444,7 @@ $files = $db->query("SELECT f.*, p.can_read, p.can_write, p.can_delete, p.can_re
                 $.post('includes/handlers.php', {
                     action: 'tag_file',
                     id: id,
-                    tags: $('#tags').val()
+                    tags: $('#tagsInput').val()
                 }, function(response) {
                     if (response.success) {
                         alert('Tags saved successfully');
@@ -503,7 +462,7 @@ $files = $db->query("SELECT f.*, p.can_read, p.can_write, p.can_delete, p.can_re
             
             $.post('includes/handlers.php', {
                 action: 'search_files',
-                query: $('#searchQuery').val(),
+                query: $('#searchInput').val(),
                 type: $('#searchType').val(),
                 tags: $('#searchTags').val()
             }, function(response) {
@@ -555,7 +514,7 @@ $files = $db->query("SELECT f.*, p.can_read, p.can_write, p.can_delete, p.can_re
                 $.post('includes/handlers.php', {
                     action: 'share',
                     id: id,
-                    username: $('#shareUsername').val(),
+                    username: $('#shareEmail').val(),
                     permissions: {
                         read: $('#canRead').is(':checked'),
                         write: $('#canWrite').is(':checked'),
