@@ -1,0 +1,55 @@
+.card {
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-title i {
+    margin-right: 8px;
+}
+
+.btn-group {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-header {
+    border-bottom: 2px solid #dee2e6;
+}
+
+.modal-footer {
+    border-top: 2px solid #dee2e6;
+}
+
+.file-icon {
+    font-size: 24px;
+    margin-right: 8px;
+}
+
+.file-size {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+/* Loading spinner */
+.spinner {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.spinner.show {
+    display: block;
+}

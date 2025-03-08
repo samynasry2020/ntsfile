@@ -1,0 +1,28 @@
+# PHP
+*.php~
+*.phps
+*.log
+
+# Database
+*.sql
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Uploads
+uploads/*
+!uploads/.gitkeep
+
+# Cache and logs
+cache/
+logs/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
