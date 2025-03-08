@@ -1,7 +1,7 @@
 <?php
 define('DB_HOST', 'ntsfm-ntsfm.c.aivencloud.com');
 define('DB_USER', 'avnadmin');
-define('DB_PASS', 'AVNS_tZ_mA6t9dITpkAznJPL');
+define('DB_PASS', '');
 define('DB_NAME', 'defaultdb');
 define('DB_PORT', 17153);
 
